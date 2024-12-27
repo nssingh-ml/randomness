@@ -57,7 +57,7 @@ def example_coupon_collector_test():
 
     try:
         num_symbols = 2  # Number of distinct symbols
-        print(test_data)
+        # print(test_data)
         p_value, result = coupon_collector_test(bit_stream, num_symbols)
         print(f"Coupon Collector's Test: P-Value = {p_value}, Result = {result}")
     except Exception as e:
