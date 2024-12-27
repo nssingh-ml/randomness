@@ -1,0 +1,39 @@
+TestU01 offers a comprehensive suite of statistical randomness tests categorized into three main families: SmallCrush, Crush, and BigCrush. Each family consists of specific tests for assessing the quality of random number generators. Here's an outline of the tests included in these families:
+
+1. SmallCrush
+A lightweight set of tests for quick validation.
+Tests:
+Birthday Spacings
+Collision
+Gap
+SimpPoker (Simple Poker Test)
+Coupon Collector
+Runs
+Longest Run
+Matrix Rank
+Linear Complexity
+Serial
+Auto-Correlation
+
+
+
+2. Crush
+A more comprehensive suite designed for thorough evaluation.
+Tests:
+Includes all SmallCrush tests
+Plus additional tests like:
+Weight Distribution
+Random Walk
+Hamming Weight
+Hamming Distance
+Permutation
+Maximum of t
+Linear Complexity Profile
+Fourier Transform
+
+
+
+
+3. BigCrush
+The most exhaustive suite with additional statistical tests.
+Builds on Crush and SmallCrush with extended sequences and iterations.
