@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import asksaveasfile
 from tkinter import messagebox
+import tkinter as tkk
 
 from TestU01.TestU01GUI import CustomButton, Input, LabelTag, TestItem
 # from GUI import Input
@@ -211,16 +212,43 @@ class Main(Frame):
 #     app = Main(root)
 #     app.mainloop()
 
-def run_testu01_gui():
-    """Launches the NIST GUI."""
+# def run_testu01_gui():
+#     """Launches the NIST GUI."""
+#     np.seterr('raise')  # Make exceptions fatal
+#     root = Tk()
+#     root.resizable(0, 0)
+#     root.geometry("1300x650")
+#     root.title("TestU01 Randomness Test Suite")
+#     app = Main(root)
+#     app.focus_displayof()
+#     root.mainloop()
+
+def run_testu01_gui(parent, on_close):
+    """Launches the Diehard GUI."""
+    def on_back():
+        parent.destroy()
+        on_close()
+
     np.seterr('raise')  # Make exceptions fatal
-    root = Tk()
-    root.resizable(0, 0)
-    root.geometry("1300x650")
-    root.title("TestU01 Randomness Test Suite")
-    app = Main(root)
-    app.focus_displayof()
-    root.mainloop()
+    testu01_window = tkk.Toplevel(parent)
+    testu01_window.resizable(0, 0)
+    testu01_window.geometry("1300x650")
+    # root.title('Test Suite for NIST Random Numbers')
+
+    testu01_window.wm_attributes("-topmost", 1)
+    testu01_window.focus_force()
+
+    exit = CustomButton(testu01_window, 'Back', 695, 615, 100, on_back)
+    # back_button = tk.Button(root, text="Back to Main Menu", command=on_back)
+    # back_button.pack(side=tk.BOTTOM, pady=10)
+
+    # Ensure the Toplevel window behaves like a modal dialog
+    # testu01_window.transient(parent)
+    # testu01_window.grab_set()
+    # parent.wait_window(testu01_window)
+    app = Main(testu01_window)
+    # app.focus_displayof()
+    testu01_window.mainloop()
 
 # run_testu01_gui()
 

@@ -7,7 +7,7 @@ from TestU01.TestU01Main import run_testu01_gui
 class RandomnessTesterApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Randomness Tester")
+        self.root.title("Statistical Tests for Randomness in Cryptographic Applications")
         self.root.geometry("600x400")
         
         # Main Menu
@@ -64,18 +64,29 @@ class RandomnessTesterApp:
 
     def open_dieharder_window(self):
         """Redirect to the Dieharder randomness test window."""
-        self.root.destroy()
-        # self.randomness_test_window("Dieharder Test")
-        run_diehard_gui()
-        # self.root.withdraw()
+        # self.root.destroy()
+        # # self.randomness_test_window("Dieharder Test")
+        # run_diehard_gui()
+        # # self.root.withdraw()
+
+        self.hide_main_window()
+        nist_root = tk.Toplevel()
+        nist_root.title("Diehard Randomness Tests")
+        run_diehard_gui(parent=nist_root, on_close=self.show_main_window)
 
     def open_testu01_window(self):
         """Redirect to the TestU01 randomness test window."""
         # self.clear_window()
-        # self.randomness_test_window("TestU01")
-        self.root.destroy()
-        run_testu01_gui()
-        self.root.withdraw()
+        # # self.randomness_test_window("TestU01")
+        # self.root.destroy()
+        # run_testu01_gui()
+        # self.root.withdraw()
+
+
+        self.hide_main_window()
+        nist_root = tk.Toplevel()
+        nist_root.title("TestU01 Randomness Tests")
+        run_testu01_gui(parent=nist_root, on_close=self.show_main_window)
 
     def open_custom_test_window(self):
         """Redirect to the Custom randomness test window."""
