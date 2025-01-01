@@ -351,16 +351,16 @@ def run_diehard_gui(parent, on_close):
     diehard_window.geometry("1300x650")
     # root.title('Test Suite for NIST Random Numbers')
 
-    diehard_window.wm_attributes("-topmost", 1)
-    diehard_window.focus_force()
+    # diehard_window.wm_attributes("-topmost", 1)
+    # diehard_window.focus_force()
 
     exit = CustomButton(diehard_window, 'Back', 695, 535, 100, on_back)
     # back_button = tk.Button(root, text="Back to Main Menu", command=on_back)
     # back_button.pack(side=tk.BOTTOM, pady=10)
 
     # Ensure the Toplevel window behaves like a modal dialog
-    # diehard_window.transient(parent)
-    # diehard_window.grab_set()
+    diehard_window.transient(parent)
+    diehard_window.grab_set()
     # parent.wait_window(diehard_window)
     app = Main(diehard_window)
     # app.focus_displayof()

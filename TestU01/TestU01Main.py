@@ -235,16 +235,16 @@ def run_testu01_gui(parent, on_close):
     testu01_window.geometry("1300x650")
     # root.title('Test Suite for NIST Random Numbers')
 
-    testu01_window.wm_attributes("-topmost", 1)
-    testu01_window.focus_force()
+    # testu01_window.wm_attributes("-topmost", 1)
+    # testu01_window.focus_force()
 
     exit = CustomButton(testu01_window, 'Back', 695, 615, 100, on_back)
     # back_button = tk.Button(root, text="Back to Main Menu", command=on_back)
     # back_button.pack(side=tk.BOTTOM, pady=10)
 
     # Ensure the Toplevel window behaves like a modal dialog
-    # testu01_window.transient(parent)
-    # testu01_window.grab_set()
+    testu01_window.transient(parent)
+    testu01_window.grab_set()
     # parent.wait_window(testu01_window)
     app = Main(testu01_window)
     # app.focus_displayof()
