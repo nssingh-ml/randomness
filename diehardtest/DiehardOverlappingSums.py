@@ -77,10 +77,10 @@ class DiehardOverlappingSums:
 #         }
 
 
-example_data = np.random.randint(0, 256, size=20000, dtype=np.uint8)  # Simulated random data
-result = DiehardOverlappingSums.run_test(example_data)
+# example_data = np.random.randint(0, 256, size=20000, dtype=np.uint8)  # Simulated random data
+# result = DiehardOverlappingSums.run_test(example_data)
 
-print(result)
+# print(result)
 
 # if __name__ == "__main__":
 #     import sys

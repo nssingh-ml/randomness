@@ -70,4 +70,4 @@ def example_collision_test():
         return f"Error: {e}"
 
 # Run the test and display the result
-print(example_collision_test())
+# print(example_collision_test())

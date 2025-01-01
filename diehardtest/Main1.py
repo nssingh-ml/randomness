@@ -3,6 +3,7 @@ import numpy as np
 from tkinter import *
 from tkinter.filedialog import askopenfilename, asksaveasfile
 from tkinter import messagebox
+import tkinter as tk
 
 from GUI import CustomButton, Input, LabelTag, TestItem
 from diehardtest.DiehardBirthdaySpacings import DiehardBirthdaySpacings
@@ -329,13 +330,40 @@ class Main(Frame):
             item.set_check_box_value(0)
 
 
-def run_diehard_gui():
-    np.seterr("raise")
-    root = Tk()
-    root.resizable(0, 0)
-    root.geometry("1300x650")
-    root.title("Diehard Randomness Test Suite")
-    app = Main(root)
-    app.mainloop()
+# def run_diehard_gui():
+#     np.seterr("raise")
+#     root = Tk()
+#     root.resizable(0, 0)
+#     root.geometry("1300x650")
+#     root.title("Diehard Randomness Test Suite")
+#     app = Main(root)
+#     app.mainloop()
+
+def run_diehard_gui(parent, on_close):
+    """Launches the Diehard GUI."""
+    def on_back():
+        parent.destroy()
+        on_close()
+
+    np.seterr('raise')  # Make exceptions fatal
+    diehard_window = tk.Toplevel(parent)
+    diehard_window.resizable(0, 0)
+    diehard_window.geometry("1300x650")
+    # root.title('Test Suite for NIST Random Numbers')
+
+    # diehard_window.wm_attributes("-topmost", 1)
+    # diehard_window.focus_force()
+
+    exit = CustomButton(diehard_window, 'Back', 695, 535, 100, on_back)
+    # back_button = tk.Button(root, text="Back to Main Menu", command=on_back)
+    # back_button.pack(side=tk.BOTTOM, pady=10)
+
+    # Ensure the Toplevel window behaves like a modal dialog
+    diehard_window.transient(parent)
+    diehard_window.grab_set()
+    # parent.wait_window(diehard_window)
+    app = Main(diehard_window)
+    # app.focus_displayof()
+    diehard_window.mainloop()
 
 # run_diehard_gui()

@@ -77,7 +77,8 @@ class Main(Frame):
         self._test_string = []
 
     def init_window(self):
-        frame_title = 'A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications'
+        # frame_title = 'A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications'
+        frame_title = 'NIST Randomness Test Suite'
         title_label = LabelTag(self.master, frame_title, 0, 5, 1260)
         # Setup LabelFrame for Input
         input_label_frame = LabelFrame(self.master, text="Input Data")
