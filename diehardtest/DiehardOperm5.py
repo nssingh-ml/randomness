@@ -12,48 +12,48 @@ class DiehardOPERM5:
         :param overlap: Whether to use overlapping samples (default: True).
         :return: Tuple (p_value, result), where p_value is the calculated p-value, and result is "Random" or "Non-Random".
         """
-        # try:
+        try:
             # Convert input to numerical format if necessary
-        data  = list(map(int, data))
-        numerical_data = DiehardOPERM5._prepare_data(data)
+            data  = list(map(int, data))
+            numerical_data = DiehardOPERM5._prepare_data(data)
 
-        # Ensure enough data for the required samples
-        if len(numerical_data) < 5:
-            raise ValueError("Insufficient data length. At least 5 integers are required.")
+            # Ensure enough data for the required samples
+            if len(numerical_data) < 5:
+                raise ValueError("Insufficient data length. At least 5 integers are required.")
 
-        # Count occurrences of each permutation
-        counts = np.zeros(120, dtype=float)
-        if overlap:
-            for i in range(samples):
-                indices = numerical_data[i % len(numerical_data): i % len(numerical_data) + 5]
-                # print(indices)
-                if(len(indices)==5):
-                    perm_index = DiehardOPERM5._perm_index(indices)
-                    counts[perm_index] += 1
-        else:
-            for i in range(0, samples * 5, 5):
-                if i + 5 <= len(numerical_data):
-                    indices = numerical_data[i:i + 5]
-                    perm_index = DiehardOPERM5._perm_index(indices)
-                    counts[perm_index] += 1
+            # Count occurrences of each permutation
+            counts = np.zeros(120, dtype=float)
+            if overlap:
+                for i in range(samples):
+                    indices = numerical_data[i % len(numerical_data): i % len(numerical_data) + 5]
+                    # print(indices)
+                    if(len(indices)==5):
+                        perm_index = DiehardOPERM5._perm_index(indices)
+                        counts[perm_index] += 1
+            else:
+                for i in range(0, samples * 5, 5):
+                    if i + 5 <= len(numerical_data):
+                        indices = numerical_data[i:i + 5]
+                        perm_index = DiehardOPERM5._perm_index(indices)
+                        counts[perm_index] += 1
 
-        # Expected counts for uniform distribution
-        expected = np.full(120, samples / 120)
+            # Expected counts for uniform distribution
+            expected = np.full(120, samples / 120)
 
-        # Calculate chi-square statistic
-        chi_square = np.sum(((counts - expected) ** 2) / expected)
+            # Calculate chi-square statistic
+            chi_square = np.sum(((counts - expected) ** 2) / expected)
 
-        # Degrees of freedom for overlapping vs non-overlapping
-        ndof = 96 if overlap else 119
+            # Degrees of freedom for overlapping vs non-overlapping
+            ndof = 96 if overlap else 119
 
-        # Calculate p-value
-        p_value = chi2.sf(chi_square, ndof)
+            # Calculate p-value
+            p_value = chi2.sf(chi_square, ndof)
 
-        # Determine result based on p-value
-        result = "Random" if p_value > 0.01 else "Non-Random"
-        return p_value, result
-        # except Exception as e:
-            # raise ValueError(f"Error in OPERM5 Test: {e}")
+            # Determine result based on p-value
+            result = "Random" if p_value > 0.01 else "Non-Random"
+            return p_value, result
+        except Exception as e:
+            raise ValueError(f"Error in OPERM5 Test: {e}")
 
     @staticmethod
     def _perm_index(v):

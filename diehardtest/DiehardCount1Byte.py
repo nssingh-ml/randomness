@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.stats import chi2
+import math
 
 class DiehardCountOnesByte:
     @staticmethod
@@ -29,7 +30,7 @@ class DiehardCountOnesByte:
                 counts[ones_count] += 1
 
             # Expected counts for uniform distribution of 1s in bytes
-            expected = [samples * (np.math.comb(8, k) / 256) for k in range(9)]
+            expected = [samples * (math.comb(8, k) / 256) for k in range(9)]
 
             # Calculate chi-square statistic
             chi_square = np.sum(((counts - expected) ** 2) / expected)

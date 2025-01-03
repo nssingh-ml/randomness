@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.stats import chi2
+import math
 
 class DiehardCountOnes:
     @staticmethod
@@ -34,7 +35,7 @@ class DiehardCountOnes:
                 counts[ones_count] += 1
 
             # Expected counts for uniform distribution of 1s in blocks
-            expected = [samples * (np.math.comb(block_size, k) / (2 ** block_size)) for k in range(block_size + 1)]
+            expected = [samples * (math.comb(block_size, k) / (2 ** block_size)) for k in range(block_size + 1)]
 
             # Calculate chi-square statistic
             chi_square = np.sum(((counts - expected) ** 2) / expected)

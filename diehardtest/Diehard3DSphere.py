@@ -36,6 +36,8 @@ class Diehard3DSphereTest:
 
             # Fit radii to exponential distribution and calculate p-value using KS test
             scale = np.mean(radii)  # Theoretical scale parameter for exponential distribution
+            if scale <= 0:
+                raise ValueError("Invalid scale parameter for exponential distribution.")
             ks_statistic, p_value = kstest(radii, 'expon', args=(0, scale))
 
             # Determine result based on p-value
