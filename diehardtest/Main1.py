@@ -6,6 +6,7 @@ from tkinter import messagebox
 import tkinter as tk
 
 from GUI import CustomButton, Input, LabelTag, TestItem
+from Tools import Tools
 from diehardtest.DiehardBirthdaySpacings import DiehardBirthdaySpacings
 from diehardtest.DiehardOperm5 import DiehardOPERM5
 from diehardtest.DiehardBinaryRank32x32 import Diehard32x32BinaryRank
@@ -243,7 +244,7 @@ class Main(Frame):
         #     messagebox.showwarning("Warning",
         #                            'You must input the binary data or read the data from from the file.')
 
-        if not self.__binary_input.get_data() and not self.__binary_file_input.get_data() and self.__string_data_file_input.get_data():
+        if not self.__binary_input.get_data() and not self.__binary_file_input.get_data() and not self.__string_data_file_input.get_data():
             messagebox.showwarning("Warning", "You must provide binary data or select a file.")
             return None
         
@@ -255,11 +256,37 @@ class Main(Frame):
             return None
 
         input_data = []
-        if self.__binary_input.get_data():
+        # if self.__binary_input.get_data():
+        #     input_data.append(self.__binary_input.get_data())
+        # elif self.__binary_file_input.get_data():
+        #     with open(self.__file_name, "r") as file:
+        #         input_data.append(file.read().strip())
+        
+        if not len(self.__binary_input.get_data()) == 0:
             input_data.append(self.__binary_input.get_data())
-        elif self.__binary_file_input.get_data():
-            with open(self.__file_name, "r") as file:
-                input_data.append(file.read().strip())
+        elif not len(self.__binary_file_input.get_data()) == 0:
+            temp = []
+            if self.__file_name:
+                handle = open(self.__file_name,'rb')
+            for data in handle:
+                temp.append(data.strip().rstrip())
+            # test_data = ''.join(temp)
+            test_data = ''.join(item.decode('utf-8', errors='ignore') for item in temp)
+            input_data.append(test_data[:1000000])
+        elif not len(self.__string_data_file_input.get_data()) == 0:
+            data = []
+            count = 1
+            if self.__file_name:
+                handle = open(self.__file_name)
+            for item in handle:
+                if item.startswith('http://'):
+                    url = Tools.url_to_binary(item)
+                    data.append(Tools.string_to_binary(url))
+                else:
+                    data.append(Tools.string_to_binary(item))
+                count += 1
+            print(data)
+            input_data.append(''.join(data))
 
         try:
             self._test_results = []

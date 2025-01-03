@@ -12,6 +12,7 @@ class DiehardSqueezeTest:
         :return: Tuple (p_value, result), where p_value is the calculated p-value, and result is "Random" or "Non-Random".
         """
         try:
+            data  = list(map(int, data))
             # Convert input data to numerical values in the range [0, 1)
             numerical_data = DiehardSqueezeTest._prepare_numerical_data(data)
 
