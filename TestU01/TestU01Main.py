@@ -69,7 +69,7 @@ class Main(Frame):
         self.__string_data_file_input = Input(input_label_frame, 'String Data File', 10, 65, True,
                                               self.select_data_file, button_xcoor=1060, button_width=160)
 
-        self._stest_selection_label_frame = LabelFrame(self.master, text="Randomness Testing", padx=5, pady=5)
+        self._stest_selection_label_frame = LabelFrame(self.master, text="Randomness Testing                          (alpha=0.01)", padx=5, pady=5)
         self._stest_selection_label_frame.config(font=("Calibri", 14))
         self._stest_selection_label_frame.place(x=20, y=155, width=1260, height=450)
 
@@ -146,6 +146,7 @@ class Main(Frame):
                 for item in self._test:
                     if item.get_check_box_value() == 1:
                         results[count] = self.__test_function[count](test_data)
+
                     count += 1
                 self._test_result.insert(0, results)
 
@@ -162,7 +163,7 @@ class Main(Frame):
                 self._test[count].set_result_value('')
             else:
                 self._test[count].set_p_value(result[0])
-                print(result)
+                # print(result)
                 self._test[count].set_result_value(self.get_result_string(result[1]))
             count += 1
 
