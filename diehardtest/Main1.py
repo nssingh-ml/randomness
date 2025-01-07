@@ -90,7 +90,7 @@ class Main(Frame):
         self.__string_data_file_input = Input(input_label_frame, 'String Data File', 10, 65, True,
                                               self.select_data_file, button_xcoor=1060, button_width=160)
 
-        self.test_label_frame = LabelFrame(self.master, text="Randomness Testing", padx=15, pady=15)
+        self.test_label_frame = LabelFrame(self.master, text="Randomness Testing                          (alpha=0.01)", padx=15, pady=15)
         self.test_label_frame.config(font=("Calibri", 14))
         self.test_label_frame.place(x=20, y=155, width=1260, height=300)
 
@@ -155,6 +155,12 @@ class Main(Frame):
         self._squeeze = TestItem(self.test_label_frame, self._test_type[13], 620, 185, p_value_x_coor=875, p_value_width=235, result_x_coor=1115, result_width=110, font_size=11)
         self._test.append(self._squeeze)
 
+        self._OPSO = TestItem(self.test_label_frame, self._test_type[14], 10, 215, p_value_x_coor=265, p_value_width=235, result_x_coor=505, result_width=110, font_size=11)
+        self._test.append(self._OPSO)
+
+        self.OQSO = TestItem(self.test_label_frame, self._test_type[15], 620, 215, p_value_x_coor=875, p_value_width=235, result_x_coor=1115, result_width=110, font_size=11)
+        self._test.append(self.OQSO)
+
         self._result_field = [
             self._birthday_spacing,
             self._sums,
@@ -172,29 +178,7 @@ class Main(Frame):
             self._squeeze
         ]
 
-       
-        # LabelTag(test_label_frame, "Test Type", 10, 5, 150, font_size=12, relief="groove")
-        # test_type_label = LabelTag(test_label_frame, 'Test Type', 10, 5, 350, 12, border=2,relief="groove")
-        # p_value_label = LabelTag(test_label_frame, 'P-Value', 365, 5, 500, 12, border=2,relief="groove")
-        # result_label = LabelTag(test_label_frame, 'Result', 870, 5, 350, 12, border=2,relief="groove")
-        # LabelTag(test_label_frame, "P-Value", 350, 5, 180, font_size=12, relief="groove")
-        # LabelTag(test_label_frame, "Result", 8770, 5, 350, font_size=12, relief="groove")
 
-        # self._tests = []
-
-        # self.__monobit = TestItem(self.__stest_selection_label_frame, self.__test_type[0], 10, 35)
-        # self.__test.append(self.__monobit)
-
-        # self.__cusum_f = TestItem(self.__stest_selection_label_frame, self.__test_type[12], 10, 335)
-        # self.__test.append(self.__cusum_f)
-
-        # self.__cusum_r = TestItem(self.__stest_selection_label_frame, self.__test_type[13], 10, 360)
-        # self.__test.append(self.__cusum_r)
-        # for i, test_name in enumerate(self._test_type):
-        #     y_offset = 35 + (i * 30)
-        #     test_item = TestItem(test_label_frame, test_name, 10, y_offset,
-        #                          p_value_x_coor=365, p_value_width=235, result_x_coor=505, result_width=110, font_size=11)
-        #     self._tests.append(test_item)
 
         # execute_button = CustomButton(self.master, "Execute Test", 20, 615, 100, self.execute)
         save_button = CustomButton(self.master, "Save Results", 385, 535, 100, self.save_results)
@@ -299,7 +283,7 @@ class Main(Frame):
                         # print("test_func,p_value",test_func,p_value)
                         results.append((idx, p_value, result))
                 self._test_results.append(results)
-            print("diehard_test_results",self._test_results)
+            # print("diehard_test_results",self._test_results)
             self.write_results(self._test_results[0])
             messagebox.showinfo("Execute", "Tests completed successfully.")
         except Exception as e:

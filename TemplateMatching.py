@@ -11,8 +11,6 @@ class TemplateMatching:
     @staticmethod
     def non_overlapping_test(binary_data:str, verbose=False, template_pattern='000000001', block=8):
         """
-        Note that this description is taken from the NIST documentation [1]
-        [1] http://csrc.nist.gov/publications/nistpubs/800-22-rev1a/SP800-22rev1a.pdf
         The focus of this test is the number of occurrences of pre-specified target strings. The purpose of this
         test is to detect generators that produce too many occurrences of a given non-periodic (aperiodic) pattern.
         For this test and for the Overlapping Template Matching test of Section 2.8, an m-bit window is used to
