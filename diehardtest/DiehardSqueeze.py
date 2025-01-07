@@ -48,7 +48,9 @@ class DiehardSqueezeTest:
             return p_value, result
 
         except Exception as e:
-            raise ValueError(f"Error in Squeeze Test: {e}")
+            # raise ValueError(f"Error in Squeeze Test: {e}")
+            print(f"Error in Squeeze Test: {e}")
+            return -1, "Non-Random"
 
     @staticmethod
     def _prepare_numerical_data(data):

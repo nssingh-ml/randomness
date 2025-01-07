@@ -48,7 +48,9 @@ class DiehardParkingLotTest:
             result = "Random" if p_value > 0.01 else "Non-Random"
             return p_value, result
         except Exception as e:
-            raise ValueError(f"Error in Parking Lot Test: {e}")
+            # raise ValueError(f"Error in Parking Lot Test: {e}")
+            print(f"Error in Parking Lot Test: {e}")
+            return -1, "Non-Random"
 
     @staticmethod
     def _is_valid_parking(x, y, parked_circles, radius, epsilon=1e-6):

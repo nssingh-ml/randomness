@@ -44,7 +44,9 @@ class Diehard3DSphereTest:
             result = "Random" if p_value > 0.01 else "Non-Random"
             return p_value, result
         except Exception as e:
-            raise ValueError(f"Error in 3D Sphere Test: {e}")
+            # raise ValueError(f"Error in 3D Sphere Test: {e}")
+            print(f"Error in 3D Sphere Test: {e}")
+            return -1, "Non-Random"
 
     @staticmethod
     def _prepare_numerical_data(data):

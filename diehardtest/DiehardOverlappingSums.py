@@ -61,7 +61,9 @@ class DiehardOverlappingSums:
             #     "p_value": p_value
             # }
         except Exception as e:
-            raise ValueError(f"Error in  Overlapping Sums Test: {e}")
+            print(f"Error in  Overlapping Sums Test: {e}")
+            return  -1, "Non-Random"
+            # raise ValueError(f"Error in  Overlapping Sums Test: {e}")
 
 # def process_input(data):
 #     try:

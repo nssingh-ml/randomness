@@ -92,7 +92,7 @@ class Main(Frame):
                                               self.select_data_file, button_xcoor=1060, button_width=160)
 
         # Setup LabelFrame for Randomness Test
-        self._stest_selection_label_frame = LabelFrame(self.master, text="Randomness Testing", padx=5, pady=5)
+        self._stest_selection_label_frame = LabelFrame(self.master, text="Randomness Testing                          (alpha=0.01)", padx=5, pady=5)
         self._stest_selection_label_frame.config(font=("Calibri", 14))
         self._stest_selection_label_frame.place(x=20, y=155, width=1260, height=450)
 
